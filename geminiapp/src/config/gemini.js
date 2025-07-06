@@ -1,5 +1,3 @@
-// const apiKey = "AIzaSyB2Fvgw5kkAviHWHBOIL1A9OceeDuQdis0";
-
 const {
     GoogleGenerativeAI,
     HarmCategory,
@@ -7,7 +5,7 @@ const {
 } = require("@goolge/generative-ai");
 
 const MODEL_NAME = "gemini-2.0-flash-lite";
-const API_KEY = "AIzaSyB2Fvgw5kkAviHWHBOIL1A9OceeDuQdis0";
+const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
 async function runChat(prompt) {
     const genAI = new GoogleGenerativeAI(API_KEY);
