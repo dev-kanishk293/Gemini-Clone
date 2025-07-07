@@ -6,9 +6,9 @@ import {
   GoogleGenAI,
 } from '@google/genai';
 
-async function main() {
+async function main(prompt) {
   const ai = new GoogleGenAI({
-    apiKey: process.env.GEMINI_API_KEY,
+    apiKey: import.meta.env.VITE_GOOGLE_API_KEY,
   });
   const config = {
     responseMimeType: 'text/plain',
@@ -19,7 +19,7 @@ async function main() {
       role: 'user',
       parts: [
         {
-          text: `INSERT_INPUT_HERE`,
+          text: prompt,
         },
       ],
     },
@@ -31,9 +31,10 @@ async function main() {
     contents,
   });
   let fileIndex = 0;
-  for await (const chunk of response) {
-    console.log(chunk.text);
-  }
+  // for await (const chunk of response) {
+  //   console.log(chunk.text);
+  // }
+  return response;
 }
 
-main();
+export default main;
